@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests, time, re
 
-URL = "https://www.pexels.com/search/nature%20wallpaper/"
+URL = "http://all-free-download.com/wallpapers/"
 
 proxies = {'http' : 'proxy.bloomberg.com:81',
            'https': 'proxy.bloomberg.com:81'}
@@ -12,7 +12,8 @@ page = requests.get(URL, proxies=proxies)
 
 soup = BeautifulSoup(page.content, 'html.parser')
 
-results = soup.find_all("a", title=re.compile("Green"))
+# find all img tags that have a class "img-responsive*"
+results = soup.find_all("img", class_=re.compile("img-responsive*"))
 
 for find in results:
     print (find)
