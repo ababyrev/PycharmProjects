@@ -12,8 +12,8 @@ page = requests.get(URL, proxies=proxies)
 
 soup = BeautifulSoup(page.content, 'html.parser')
 
-# find all img tags that have a class "img-responsive*"
-results = soup.find_all("img", class_=re.compile("img-responsive*"))
+# find all img tags that have a class "img-responsive*" and alt tag contains word 'Xbox'
+results = soup.find_all("img", class_=re.compile("img-responsive*"), alt=re.compile("Xbox"))
 
 for find in results:
     print (find)
